@@ -395,6 +395,11 @@ func TestCreateConfigMap(t *testing.T) {
 			fromEnvFile:   "foo",
 			expectErr:     true,
 		},
+		"create_invalid_configmap_too_many_env_file": {
+			configMapName: "config_map_name",
+			fromEnvFile:   []string{"envfile1","envfile2"},
+			expectErr:     true,
+		},
 	}
 
 	// run all the tests
