@@ -208,6 +208,9 @@ func (o *ConfigMapOptions) Validate() error {
 	if len(o.EnvFileSource) > 0 && (len(o.FileSources) > 0 || len(o.LiteralSources) > 0) {
 		return fmt.Errorf("from-env-file cannot be combined with from-file or from-literal")
 	}
+	if len(o.EnvFileSource) > 1 {
+		return fmt.Errorf("from-env-file cannot be used more than once")
+	}
 	return nil
 }
 
